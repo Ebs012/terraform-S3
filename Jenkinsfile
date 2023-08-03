@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     AWS_ACCESS_KEY_ID = credentials('my-ebs-aws-credential')
-    AWS_SECRET_ACCESS_KEY = credentials('xlqxBHUsqCa7b47xwmWxGBF5PdTYovMXTGxrxyMg')
+    AWS_SECRET_ACCESS_KEY = credentials('my-ebs-aws-credential')
   }
   stages {
     stage('Checkout') {
