@@ -10,20 +10,15 @@ pipeline {
         git 'https://github.com/Ebs012/terraform-S3.git'
       }
     }
-    stage('Terraform Init') {
-      steps {
-        sh 'terraform init'
+   stage('Terraform Init') {
+     steps {
+       sh 'terraform init'
       }
     }
     stage('Terraform Apply') {
       steps {
-        withCredentials([
-          awsAccessKey(credentialsId: 'my-ebs-aws-credential', variable: 'AWS_ACCESS_KEY_ID'),
-          awsSecretKey(credentialsId: 'my-ebs-aws-credential', variable: 'AWS_SECRET_ACCESS_KEY')
-        ]) {
+        withAWS(region: 'eu-west-2', credentials: 'my-ebs-aws-credential') {
           sh 'terraform apply -auto-approve'
         }
       }
     }
-  }
-}
