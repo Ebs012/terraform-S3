@@ -15,7 +15,6 @@ pipeline {
        sh 'terraform init'
       }
     }
-    # to do
     stage('Terraform Apply') {
       steps {
         withAWS(credentials: [
