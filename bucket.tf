@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "ebunlomo-bucket"  # Replace this with a globally unique bucket name
+  bucket = "ebunlomo1-bucket"  # Replace this with a globally unique bucket name
 
   # Uncomment the line below if you want to enable versioning on the bucket
   # versioning {
