@@ -15,11 +15,16 @@ pipeline {
        sh 'terraform init'
       }
     }
+    # to do
     stage('Terraform Apply') {
       steps {
-        withAWS(region: 'eu-west-2', credentials: 'my-ebs-aws-credential') {
+        withAWS(credentials: [
+          awsAccessKeyVariable(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
+          awsSecretKeyVariable(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
+        ]) {
           sh 'terraform apply -auto-approve'
         }
       }
     }
   }
+}
