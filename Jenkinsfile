@@ -18,8 +18,8 @@ pipeline {
     stage('Terraform Apply') {
       steps {
         withAWS(credentials: [
-          awsAccessKeyVariable(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
-          awsSecretKeyVariable(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
+          awsAccessKeyVariable(credentialsId: 'my-ebs-aws-credential', variable: 'AWS_ACCESS_KEY_ID'),
+          awsSecretKeyVariable(credentialsId: 'my-ebs-aws-credential', variable: 'AWS_SECRET_ACCESS_KEY')
         ]) {
           sh 'terraform apply -auto-approve'
         }
